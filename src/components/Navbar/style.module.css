@@ -1,0 +1,13 @@
+.navbar{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+.loginButton{
+    background-color: white;
+    color: #2874f0;
+    width: 8%;
+    border-radius: 0px;
+    font-weight: bold;
+    text-align: center;
+}

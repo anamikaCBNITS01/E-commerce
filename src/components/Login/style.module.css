@@ -1,0 +1,105 @@
+.mainBox{
+    display: flex;
+    max-width: 100%;
+}
+.leftSide{
+    height: 100%;
+    background-color: #2874f0;
+    height: 70vh;
+    width: 40%;
+    padding: '45px 35px';
+    color: white;
+}
+.rightSide{
+    padding: '25px 35px';
+    display: 'flex';
+    flex: 1;
+    flex-direction: 'column';
+    margin-top: 20px;
+    width: 60%;
+}
+.inputField{
+    margin-top: 20px;
+    width: 90%;
+}
+.heading{
+    font-size: 28px;
+    font-weight: 500;
+    padding-left: 20px;
+}
+.content{
+    padding-left: 20px;
+    color: #d3d4dd;
+}
+.text{
+      color: '#878787';
+     font-size: 12px;
+     margin-top: 20px;  
+}
+.loginButton{
+    width: 90%;
+    background-color: #fb641b;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-left: 10px;
+    height: 50px;
+    margin-top: 10px;
+}
+.loginBtnText{
+    color: white;
+    font-weight: bold;
+    background-color: #fb641b;
+}
+.orText{
+    text-align: center;
+    color: gray;
+}
+.requestButton{
+    width: 90%;
+    background-color: #ffffff;
+    display: flex;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    margin-left: 10px;
+    height: 50px;
+    margin-top: 10px;
+    border: none;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+
+}
+.requestBtn{
+    color: #2b77f0;
+    font-weight: bold;
+}
+.image{
+    margin-top: 100px;
+}
+.signUpLinks{
+    text-align: center;
+    margin-top: 100px;
+}
+.signUpLinks1{
+   color: #2874f0;
+   text-decoration: none;
+   cursor: pointer;
+}
+.TNP{
+    color: #2874f0;
+    text-decoration: none;
+    cursor: pointer;
+}
+.SignUpLoginBox{
+    padding-left: 10px;
+} 
+.SignUpLoginBox .inputField{
+    margin-top: 20px;
+}
+.icon{
+   position: absolute;
+   /* display: flex;
+   justify-content: flex-end; */
+   margin-left: 570px;
+   cursor: pointer;
+}
