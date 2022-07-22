@@ -4,8 +4,8 @@
 }
 .leftSide{
     height: 100%;
-    background-color: #2874f0;
-    height: 70vh;
+    background-color: #5e798a;
+    height: 80vh;
     width: 40%;
     padding: '45px 35px';
     color: white;
@@ -70,23 +70,27 @@
 
 }
 .requestBtn{
-    color: #2b77f0;
+    color: #2b334b;
     font-weight: bold;
 }
 .image{
-    margin-top: 100px;
+    margin-top: 80px;
+    /* padding: 2rem; */
+    height: 20vh;
+    width: max-content;
+    margin-left: 2.5rem;
 }
 .signUpLinks{
     text-align: center;
     margin-top: 100px;
 }
 .signUpLinks1{
-   color: #2874f0;
+   color: #2b334b;
    text-decoration: none;
    cursor: pointer;
 }
 .TNP{
-    color: #2874f0;
+    color: #2b334b;
     text-decoration: none;
     cursor: pointer;
 }

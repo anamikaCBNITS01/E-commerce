@@ -1,0 +1,29 @@
+.footer{
+    margin-top: 1rem;
+    /* padding: 1rem; */
+    background-color: #020a16;
+    /* position: fixed; */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+.flexBox{
+    display: flex;
+    color: white;
+    justify-content: space-evenly;
+}
+.copyright{
+    margin-top: 1rem;
+    /* padding: 1rem; */
+    background-color: #5e798a;
+    /* position: fixed; */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    height: 5vh;
+}
+.iconsName{
+    display: flex;
+    align-items: center;
+}

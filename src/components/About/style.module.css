@@ -1,0 +1,19 @@
+.FlexBox{
+    display: flex;
+    width: 100%;
+}
+.leftBox{
+width: 50%;
+
+}
+.rightBox{
+width: 50%;
+background-color: blue;
+}
+.Image{
+    width: 100%;
+    height: 60vh;
+}
+.content{
+    text-align: center;
+}

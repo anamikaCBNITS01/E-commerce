@@ -1,10 +1,17 @@
 import React from 'react'
-import Navs from '../Navbar/Navs'
+import Footer from '../Footer/Footer'
+import Slider from '../ImageSlider/ImageSlider'
+import ImageSlider from '../ImageSlider/ImageSlider'
+import Trending from '../Trending/Trending'
+import { TrendingData } from '../Trending/TrendingData'
 
 const Home = () => {
   return (
     <div>
-        <Navs/>
+       
+        <Slider/>
+        <Trending slides={TrendingData}/>
+        <Footer/>
     </div>
   )
 }

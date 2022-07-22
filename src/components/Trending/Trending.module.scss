@@ -1,0 +1,88 @@
+.ViewAll{
+    display: flex;
+    align-items: center;
+}
+.viewButton{
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.viewBtn{
+    margin-left: 80rem;
+    background-color: #020a16;
+    color: white;
+    width: 100px;
+    height: 5vh;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.slider {
+    position: relative;
+    // height: 100vh;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    margin-top: 50px;
+}
+
+.Image {
+    margin: 20px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.ImageSection {
+    display: flex;
+}
+
+.rightarrow {
+    position: absolute;
+    top: 10%;
+    right: 32px;
+    font-size: 3rem;
+    color: #000;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+.leftarrow {
+    position: absolute;
+    top: 10%;
+    left: 32px;
+    font-size: 3rem;
+    color: #000;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+.slide {
+    opacity: 0;
+    transition-duration: 1s;
+}
+
+.slideActive {
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.08);
+}
+
+.topImage {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.topContainer {
+    background-image: url("https://media.istockphoto.com/photos/forest-wooden-table-background-summer-sunny-meadow-with-green-grass-picture-id1353553203?b=1&k=20&m=1353553203&s=170667a&w=0&h=QTyTGI9tWQluIlkmwW0s7Q4z7R_IT8egpzzHjW3cSas=");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    width: 50%;
+    margin-left: 300px;
+    margin-top: 10px;
+    border-radius: 10px;
+}

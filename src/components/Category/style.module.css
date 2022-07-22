@@ -1,0 +1,17 @@
+.CategoryDiv{
+    text-align: center;
+}
+.Images{
+    width: 20rem;
+    height: 20rem;
+}
+.buttons{
+    /* background-color: white; */
+    color: black;
+    background: linear-gradient(to right, #E0EAFC 0%, #CFDEF3  51%, #E0EAFC  100%);
+    border: 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 50%;
+    font-size: 24px
+}

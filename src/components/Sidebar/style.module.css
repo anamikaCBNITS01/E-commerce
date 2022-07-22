@@ -1,0 +1,17 @@
+.ItemWithIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    color: white;
+}
+.IconColor{
+    color: white;
+    text-decoration: none;
+}
+.ItemWithIcon:hover{
+    color: white;
+    /* background-color: black; */
+    font-size: 24px;
+    cursor: pointer;
+}

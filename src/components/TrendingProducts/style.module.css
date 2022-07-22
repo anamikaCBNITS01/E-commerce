@@ -1,0 +1,35 @@
+.Images{
+    width: 20rem;
+    height: 20rem;
+}
+.Buttons{
+    display: flex;
+    justify-content: space-around;
+}
+.InStock{
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+}
+.outStock{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+.ButtonsAdd{
+    background-color: rgb(253, 216, 68);
+    color: white;
+    font-weight: bold;
+    border: 5px solid rgb(253, 216, 68);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.ButtonsBuy{
+    background-color: coral;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    border: 5px solid coral;
+    cursor: pointer;
+}
