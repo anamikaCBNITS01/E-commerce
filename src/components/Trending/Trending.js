@@ -3,6 +3,7 @@ import { TrendingData } from './TrendingData';
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 import styles from "./Trending.module.scss";
 import { useNavigate } from 'react-router';
+import Header from '../Header/Header';
 
 function Trending({ slides }) {
   const [current, setCurrent] = useState(0);

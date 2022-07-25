@@ -9,18 +9,21 @@ import Wishlist from './components/Wishlist/Wishlist';
 import SideBar from './components/Sidebar/SideBar';
 import Products from './components/TrendingProducts/Products';
 import About from './components/About/About';
+import HomeAndKicthen from './components/HomeAndKicthen';
+import { HouseHold } from './components/HomeAndKicthen/HouseHoldData';
 
 function App() {
   return (
     <BrowserRouter>
       <Navs />
-      <Header />
+      <Header/>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/category' element={<Category />} />
         <Route path='/wishlist' element={<Wishlist />} />
         <Route path='/products' element={<Products />} />
         <Route path='/about' element={<About/>}/>
+        <Route path='/home-and-kicthen' element={<HomeAndKicthen slides={HouseHold}/>}/>
       </Routes>
     </BrowserRouter>
   );
