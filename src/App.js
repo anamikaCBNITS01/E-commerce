@@ -10,7 +10,8 @@ import SideBar from './components/Sidebar/SideBar';
 import Products from './components/TrendingProducts/Products';
 import About from './components/About/About';
 import HomeAndKicthen from './components/HomeAndKicthen';
-import { HouseHold } from './components/HomeAndKicthen/HouseHoldData';
+import { HouseHold } from './components/HomeAndKicthen/Data';
+import ProfilePage from './components/Profile';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/products' element={<Products />} />
         <Route path='/about' element={<About/>}/>
         <Route path='/home-and-kicthen' element={<HomeAndKicthen slides={HouseHold}/>}/>
+        <Route path='/profile' element={<ProfilePage/>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -19,6 +19,7 @@ import { Button } from '@mui/material';
 import Login from '../Login/Login'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -82,6 +83,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Navs() {
     const [open, setOpen] = useState(false);
 
+    const navigate=useNavigate()
+
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -113,6 +116,15 @@ export default function Navs() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleChange=()=>{
+    navigate.push('/profile')
+  }
+
+  const handleTwoFun=()=>{
+    handleChange();
+    handleMenuClose();
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -130,7 +142,7 @@ export default function Navs() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleTwoFun}><Link to={'/profile'}>Profile</Link></MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );

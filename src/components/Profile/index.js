@@ -1,0 +1,44 @@
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import profile from '../../assets/profile.jpg'
+
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+  >
+    •
+  </Box>
+);
+
+export default function ProfilePage() {
+  return (
+    <Card sx={{ maxWidth: "50%",textAlign:"center",marginLeft:"25rem",marginTop:"50px",height:"60vh" }}>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          <img style={{width:"110px",height:"110px"}} src={profile} alt="loading...."/>
+        </Typography>
+        <Typography variant="h5" component="div">
+          <h3>Name : UserName</h3>
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          <p>Email : user@gmail.com</p>
+          <p>Phone Number : 1234567890</p>
+        </Typography>
+        <Typography variant="body2">
+          <p>Address : Abc colony Bhopal</p>
+          <br />
+        </Typography>
+      </CardContent>
+      <Box sx={{display:"flex",justifyContent:"space-between"}}>
+            <Box><Button variant='contained' sx={{backgroundColor:"#03353e",color:"white",marginLeft:"15px"}} size="small">Edit</Button></Box>
+            <Box><Button variant='contained' sx={{backgroundColor:"#03353e",color:"white",marginRight:"20px"}} size="small">Save</Button></Box>
+        </Box>
+    </Card>
+  );
+}
