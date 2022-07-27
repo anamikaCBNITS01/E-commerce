@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import profile from '../../assets/profile.jpg'
+import {Link} from 'react-router-dom'
 
 const bull = (
   <Box
@@ -36,7 +37,7 @@ export default function ProfilePage() {
         </Typography>
       </CardContent>
       <Box sx={{display:"flex",justifyContent:"space-between"}}>
-            <Box><Button variant='contained' sx={{backgroundColor:"#03353e",color:"white",marginLeft:"15px"}} size="small">Edit</Button></Box>
+            <Box><Button variant='contained' sx={{backgroundColor:"#03353e",color:"white",marginLeft:"15px"}} size="small"><Link style={{color:"white",textDecoration:"none"}} to='/editProfile'>Edit</Link></Button></Box>
             <Box><Button variant='contained' sx={{backgroundColor:"#03353e",color:"white",marginRight:"20px"}} size="small">Save</Button></Box>
         </Box>
     </Card>

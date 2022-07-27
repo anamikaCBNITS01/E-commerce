@@ -1,0 +1,24 @@
+.FlexBox{
+    display: flex;
+}
+.leftside{
+    min-width: 15%;
+    background-color: #03353e;
+    color: #d2ad1e;
+    font-size: 15px;
+    text-align: center;
+    height: 90vh;
+}
+.rightside{
+    min-width: 85%;
+    background-color: white;
+}
+.Images{
+    width: 250px;
+    height: 250px;
+}
+.link{
+    color: white;
+    font-size: 15px;
+    /* text-decoration: none; */
+}

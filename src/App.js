@@ -12,6 +12,7 @@ import About from './components/About/About';
 import HomeAndKicthen from './components/HomeAndKicthen';
 import { HouseHold } from './components/HomeAndKicthen/Data';
 import ProfilePage from './components/Profile';
+import EditProfile from './components/EditProfile';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/about' element={<About/>}/>
         <Route path='/home-and-kicthen' element={<HomeAndKicthen slides={HouseHold}/>}/>
         <Route path='/profile' element={<ProfilePage/>}/>
+        <Route path='/editProfile' element={<EditProfile/>}/>
       </Routes>
     </BrowserRouter>
   );
