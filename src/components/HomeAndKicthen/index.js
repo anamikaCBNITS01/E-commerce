@@ -8,6 +8,8 @@ import styles from './HomeKitchen.module.css'
 import fan from '../../assets/fans.jpg'
 import waterP from '../../assets/waterP.png'
 import mixer from '../../assets/mixer.jpg'
+import CategorySidebar from '../CatSidbar';
+import poster from '../../assets/homeKitchenPoster.jpg'
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -26,39 +28,13 @@ const HomeAndKicthen = () => {
       </div>
       <div className={styles.FlexBox}>
         <div className={styles.leftside}>
-          <div>
-            <h3>Home</h3>
-            <div><Link className={styles.link} to='/homeDecor'>Home Decor</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Lighting</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Clocks</Link></div>
-          </div>
-          <div>
-            <h3>Home & kicthen</h3>
-            <div><Link className={styles.link} to='/homeDecor'>Water Purifiers & Accessories</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Vacuum, Cleaning & Ironing</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Heating, Cooling</Link></div>
-          </div>
-          <div>
-            <h3>Kitchen, Cookware & Serveware</h3>
-            <div><Link className={styles.link} to='/homeDecor'>Home Decor</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Home Decor</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Home Decor</Link></div>
-          </div>
-          <div>
-            <h3>Furnishing</h3>
-            <div><Link className={styles.link} to='/homeDecor'>Home Decor</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Home Decor</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Home Decor</Link></div>
-          </div>
-          <div>
-            <h3>Kitchen Storage</h3>
-            <div><Link className={styles.link} to='/homeDecor'>Home Decor</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Home Decor</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Home Decor</Link></div>
-          </div>
+          <CategorySidebar/>
         </div>
         <div className={styles.rightside}>
           <div>
+          <div>
+            <img className={styles.imagePost} src={poster} alt="wait..."/>
+          </div>
           <h1>Kitchen & home appliances</h1>
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={3}>
@@ -66,7 +42,7 @@ const HomeAndKicthen = () => {
                   <Item>
                     <Box>
                       <img className={styles.Images} src={fan} alt='loading...' /><br />
-                      <button className={styles.buttons}>Fans</button>
+                      <button className={styles.buttons}><Link to="/fans">Fans</Link></button>
                     </Box>
                   </Item>
                 </Grid>

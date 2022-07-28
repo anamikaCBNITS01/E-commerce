@@ -37,7 +37,7 @@ const CategoryNav = () => {
                             <Item>
                                 <Box>
                                     <img className={styles.Images} src={cat2} alt='loading...'/><br/>
-                                    <button className={styles.buttons}>Furniture</button>
+                                    <button className={styles.buttons}><Link className={styles.link} to="/furniture">Furniture</Link></button>
                                 </Box>
                             </Item>
                         </Grid>
