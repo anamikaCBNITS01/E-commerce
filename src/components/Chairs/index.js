@@ -11,14 +11,15 @@ import Typography from '@mui/material/Typography';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
-import { FansData } from './FansData';
+import { ChairData } from '../AllData/AllData';
+
 import { Button, CardActions, Chip } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-const Fans = () => {
+const Chairs = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
+  const navigate=useNavigate();
 
-  const Navigation=()=>{
+  const buyProcessPage=()=>{
     navigate('/buyProcess')
   }
 
@@ -31,12 +32,12 @@ const Fans = () => {
         <div className={styles.rightBox}>
           <h1>Results</h1>
           {
-            FansData.map((element, index) => {
+            ChairData.map((element, index) => {
               return (
                 <Card sx={{ display: 'flex', marginTop: 5, marginLeft: "20px", marginRight: "30px" }}>
                   <CardMedia
                     component="img"
-                    sx={{ width: 151 }}
+                    sx={{ width: 151,paddingLeft:"25px" }}
                     image={element.image}
                     alt="Live from space album cover"
                   />
@@ -57,7 +58,7 @@ const Fans = () => {
                       </Typography>
                      
                         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                          <Box><button style={{backgroundColor:"#ff7f50",marginRight:"10px",color:"white",width:"100px",height:"40px",border:"none",cursor:"pointer"}} onClick={Navigation}>Buy Now</button></Box>
+                          <Box><button style={{backgroundColor:"#ff7f50",marginRight:"10px",color:"white",width:"100px",height:"40px",border:"none",cursor:"pointer"}} onClick={buyProcessPage}>Buy Now</button></Box>
                           <Box><button style={{backgroundColor:"#fdd844",color:"white",width:"100px",height:"40px",border:"none",cursor:"pointer"}}>Add To Cart</button></Box>
                         </Box>
                      
@@ -73,4 +74,4 @@ const Fans = () => {
   )
 }
 
-export default Fans
+export default Chairs

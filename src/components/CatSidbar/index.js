@@ -23,9 +23,9 @@ const CategorySidebar = () => {
           </div>
           <div>
             <h3>Furniture</h3>
-            <div><Link className={styles.link} to='/homeDecor'>Chairs</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Tables</Link></div>
-            <div><Link className={styles.link} to='/homeDecor'>Sofa</Link></div>
+            <div><Link className={styles.link} to='/chairs'>Chairs</Link></div>
+            <div><Link className={styles.link} to='/tables'>Tables</Link></div>
+            <div><Link className={styles.link} to='/sofa'>Sofa</Link></div>
           </div>
           <div>
             <h3>Sports & Fitness</h3>

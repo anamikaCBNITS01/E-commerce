@@ -5,16 +5,44 @@ import styles from './style.module.css'
 import logo from '../../assets/logo3.png'
 import { Link } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
+import axios from 'axios'
 
 const style={
     color:"white"
 }
 
 const Login = (props) => {
-    const [signup, setSignUp] = useState(false)
+    const [signup, setSignUp] = useState(false);
+    const [email,setEmail]=useState("")
+    const [password,setPassword]=useState("")
+    const [conPass,setConPass]=useState("")
+    const [number,setNumber]=useState("")
 
     const onSignupPage = () => {
         setSignUp(true)
+    }
+
+
+    async function signUp(){
+        let item={email,password,conPass,number}
+        console.log("data",item)
+
+
+       let result = await axios({
+  
+            // Endpoint to send files
+            url: "url",
+            method: "POST",
+            headers: {
+                    'Content-Iype':'application/json',
+                    "Accept":'application/json',
+            },
+          })
+          result= await result.json();
+          localStorage.setItem("user-info",JSON.stringify(result))
+          //close drawer
+          console.warn("result",result)
+        
     }
     return (
         <Dialog
@@ -37,13 +65,12 @@ const Login = (props) => {
                     {
                         signup ?
                             <Box className={styles.SignUpLoginBox}>
-                                <TextField className={styles.inputField}  variant="standard" name='email' label='Enter Email'/>
-                                <TextField className={styles.inputField}  variant="standard" name='password' label='Enter Password' />
-                                <TextField className={styles.inputField}  variant="standard" name='password' label='Enter Confirm Password' />
-                                <TextField className={styles.inputField}  variant="standard" name='number' label='Enter Mobile number' />
-                                <Box className={styles.text}>By continuing, you agree to Flipkart's <Link className={styles.TNP} to="/terms">Terms of Use</Link> and <Link className={styles.TNP} to="/privacy">Privacy Policy.</Link></Box>
+                                <TextField value={email} onChange={(e)=>setEmail(e.target.value)} className={styles.inputField}  variant="standard" name='email' label='Enter Email'/>
+                                <TextField value={password} onChange={(e)=>setPassword(e.target.value)} className={styles.inputField}  variant="standard" name='password' label='Enter Password' />
+                                <TextField value={conPass} onChange={(e)=>setConPass(e.target.value)} className={styles.inputField}  variant="standard" name='password' label='Enter Confirm Password' />
+                                <TextField value={number} onChange={(e)=>setNumber(e.target.value)} className={styles.inputField}  variant="standard" name='number' label='Enter Mobile number' />
                                 <Box className={styles.loginButton}>
-                                    <Button type='submit' sx={style}>CONTINUE</Button>
+                                    <Button onClick={signUp} type='submit' sx={style}>CONTINUE</Button>
                                 </Box>
                                 <Box className={styles.requestButton}>
                                     <Button className={styles.requestBtn} sx={{color:"#2b334b"}} onClick={() => setSignUp(false)}>Existing User? Login</Button>
@@ -53,7 +80,6 @@ const Login = (props) => {
                             <Box className={styles.SignUpLoginBox}>
                                 <TextField className={styles.inputField} variant="standard" name='email' label='Enter Email/Mobile number' />
                                 <TextField className={styles.inputField} variant="standard" name='password' label='Enter Password' />
-                                <Box className={styles.text}>By continuing, you agree to Flipkart's <Link to="/terms" className={styles.TNP}>Terms of Use</Link> and <Link className={styles.TNP} to="/privacy">Privacy Policy.</Link></Box>
                                 <Box className={styles.loginButton}>
                                     <Button sx={style}>Login</Button>
                                 </Box>

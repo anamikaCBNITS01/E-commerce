@@ -50,7 +50,7 @@ const HomeAndKicthen = () => {
                   <Item>
                     <Box>
                       <img className={styles.Images} src={waterP} alt='loading...' /><br />
-                      <button className={styles.buttons}>Water purifiers</button>
+                      <button className={styles.buttons}> <Link to="/water_purifeirs">Water purifiers</Link></button>
                     </Box>
                   </Item>
                 </Grid>
@@ -58,7 +58,7 @@ const HomeAndKicthen = () => {
                   <Item>
                     <Box>
                       <img className={styles.Images} src={mixer} alt='loading...' /><br />
-                      <button className={styles.buttons}>Mixer grinders</button>
+                      <button className={styles.buttons}> <Link to="/mixer">Mixer grinders</Link></button>
                     </Box>
                   </Item>
                 </Grid>

@@ -17,6 +17,12 @@ import Fans from './components/Fans';
 import WaterPurifeirs from './components/WaterPurifeirs'
 import Mixer from './components/Mixer';
 import Furniture from './components/Furniture';
+import Contact from './components/ContactUs/Contact';
+import BuyProccessStepper from './components/BuyProcess/Buy';
+import Chairs from './components/Chairs';
+import Tables from './components/Tables';
+import Sofa from './components/Sofa';
+import SAF from './components/SportsAndFitness';
 
 
 function App() {
@@ -37,6 +43,13 @@ function App() {
         <Route path='/water_purifeirs' element={<WaterPurifeirs/>}/>
         <Route path='/mixer' element={<Mixer/>}/>
         <Route path='/furniture' element={<Furniture/>}/>
+        <Route path='/contactUs' element={<Contact/>}/>
+        <Route path="/buyProcess" element={<BuyProccessStepper/>}/>
+        <Route path="/chairs" element={<Chairs/>}/>
+        <Route path='/tables' element={<Tables/>}/>
+        <Route path='/sofa' element={<Sofa/>}/>
+        <Route path='/sports-and-fitness' element={<SAF/>}/>
+
       </Routes>
     </BrowserRouter>
   );

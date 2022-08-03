@@ -5,13 +5,13 @@ import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom'
 import Slider from '../ImageSlider/ImageSlider'
 import styles from './style.module.css'
-import chair1 from '../../assets/chair1.png'
+import bad1 from '../../assets/bad1.jpg'
 import waterP from '../../assets/waterP.png'
 import mixer from '../../assets/mixer.jpg'
 import CategorySidebar from '../CatSidbar';
-import poster from '../../assets/fur1.jpg';
-import tab1 from '../../assets/tab1.jpg';
-import sofa1 from '../../assets/sofa1.jpg'
+import poster from '../../assets/saf.jpg';
+import dum1 from '../../assets/dum1.jpg';
+import exbike1 from '../../assets/exbike1.png'
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -22,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const Furniture = () => {
+const SAF = () => {
   return (
     <div>
       <div>
@@ -37,30 +37,30 @@ const Furniture = () => {
           <div>
             <img className={styles.imagePost} src={poster} alt="wait..."/>
           </div>
-          <h1>Furnitures</h1>
+          <h1>Sports And Fitness</h1>
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={3}>
                 <Grid item xs>
                   <Item>
                     <Box>
-                      <img className={styles.Images} src={chair1} alt='loading...' /><br />
-                      <button className={styles.buttons}><Link to="/chairs">Chairs</Link></button>
+                      <img className={styles.Images} src={bad1} alt='loading...' /><br />
+                      <button className={styles.buttons}><Link to="/chairs">Dadminton</Link></button>
                     </Box>
                   </Item>
                 </Grid>
                 <Grid item xs>
                   <Item>
                     <Box>
-                      <img className={styles.Images} src={tab1} alt='loading...' /><br />
-                      <button className={styles.buttons}><Link to="/tables">Tables</Link></button>
+                      <img className={styles.Images} src={dum1} alt='loading...' /><br />
+                      <button className={styles.buttons}><Link to="/tables">Dumbbells</Link></button>
                     </Box>
                   </Item>
                 </Grid>
                 <Grid item xs>
                   <Item>
                     <Box>
-                      <img className={styles.Images} src={sofa1} alt='loading...' /><br />
-                      <button className={styles.buttons}><Link to="/sofa">Sofa</Link></button>
+                      <img className={styles.Images} src={exbike1} alt='loading...' /><br />
+                      <button className={styles.buttons}><Link to="/sofa">Exercise Bike</Link></button>
                     </Box>
                   </Item>
                 </Grid>
@@ -73,4 +73,4 @@ const Furniture = () => {
   )
 }
 
-export default Furniture
+export default SAF
