@@ -6,6 +6,8 @@ import logo from '../../assets/logo3.png'
 import { Link } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { login, selectUser } from '../../features/userSlice'
 
 const style={
     color:"white"
@@ -13,10 +15,14 @@ const style={
 
 const Login = (props) => {
     const [signup, setSignUp] = useState(false);
+    const [off, setOff] = useState(null);
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
     const [conPass,setConPass]=useState("")
     const [number,setNumber]=useState("")
+
+    const dispatch=useDispatch();
+    const user=useSelector(selectUser);
 
     const onSignupPage = () => {
         setSignUp(true)
@@ -27,6 +33,13 @@ const Login = (props) => {
         let item={email,password,conPass,number}
         console.log("data",item)
 
+        // dispatch(login({
+        //     email:email,
+        //     password:password,
+        //     conPass:conPass,
+        //     number:number,
+        //     loggedIn:true,
+        // }))
 
        let result = await axios({
   
@@ -43,6 +56,29 @@ const Login = (props) => {
           //close drawer
           console.warn("result",result)
         
+    }
+
+
+    const LoginSubmit=()=>{
+        let item={email,password,conPass,number}
+        console.log("data",item)
+
+        // dispatch(login({
+        //     email:email,
+        //     password:password,
+        //     conPass:conPass,
+        //     number:number,
+        //     loggedIn:true,
+        // }))
+    }
+    const offDrawer=()=>{
+        setOff(props.onClose)
+    }
+    const CloseDrawer=()=>{
+        LoginSubmit();
+        offDrawer();
+        
+
     }
     return (
         <Dialog
@@ -78,10 +114,11 @@ const Login = (props) => {
                             </Box>
                             :
                             <Box className={styles.SignUpLoginBox}>
-                                <TextField className={styles.inputField} variant="standard" name='email' label='Enter Email/Mobile number' />
-                                <TextField className={styles.inputField} variant="standard" name='password' label='Enter Password' />
+                                <TextField value={email} onChange={(e)=>setEmail(e.target.value)} className={styles.inputField} variant="standard" name='email' label='Enter Email/Mobile number' />
+                                <TextField value={password} onChange={(e)=>setPassword(e.target.value)} className={styles.inputField} variant="standard" name='password' label='Enter Password' />
                                 <Box className={styles.loginButton}>
-                                    <Button sx={style}>Login</Button>
+                                <Button onClick={CloseDrawer} sx={style}>LogIn</Button>
+
                                 </Box>
                                 <Box className={styles.orText}>or</Box>
                                 <Box className={styles.requestButton}>

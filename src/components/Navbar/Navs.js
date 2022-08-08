@@ -20,6 +20,8 @@ import Login from '../Login/Login'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectUser } from '../../features/userSlice';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -82,6 +84,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Navs() {
     const [open, setOpen] = useState(false);
+    const user = useSelector(selectUser);
+    const dispatch=useDispatch();
 
     const navigate=useNavigate()
 
@@ -92,6 +96,11 @@ export default function Navs() {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleLogOut=(e)=>{
+      e.preventDefault();
+      dispatch(logout())
+    }
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState(null);
@@ -237,7 +246,12 @@ export default function Navs() {
                 <MailIcon />
               </Badge>
             </IconButton> */}
-            <Button onClick={handleClickOpen} sx={style}>Login</Button>
+            {
+              user ?
+              <Button sx={style} onClick={(e)=>handleLogOut(e)}>Logout</Button>
+              :
+              <Button onClick={handleClickOpen} sx={style}>Login</Button>
+            }
             <Button sx={styleCart}><ShoppingCartIcon/>Cart</Button>
             <IconButton
               size="large"

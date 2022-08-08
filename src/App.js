@@ -23,6 +23,8 @@ import Chairs from './components/Chairs';
 import Tables from './components/Tables';
 import Sofa from './components/Sofa';
 import SAF from './components/SportsAndFitness';
+import MyOrder from './components/MyOrder';
+import TrackOrder from './components/TrackOrder';
 
 
 function App() {
@@ -49,6 +51,8 @@ function App() {
         <Route path='/tables' element={<Tables/>}/>
         <Route path='/sofa' element={<Sofa/>}/>
         <Route path='/sports-and-fitness' element={<SAF/>}/>
+        <Route path='/myOrder' element={<MyOrder/>}/>
+        <Route path='/trackOrder' element={<TrackOrder/>}/>
 
       </Routes>
     </BrowserRouter>

@@ -86,3 +86,18 @@
     margin-top: 10px;
     border-radius: 10px;
 }
+
+@media only screen and (max-width: 1141px) {
+    .slider {
+        display:flex;
+        flex-direction: column;
+      }
+      .ImageSection {
+        display: flex;
+        flex-direction: column;
+        // width: 50%;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+  }
