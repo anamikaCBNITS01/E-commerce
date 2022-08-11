@@ -84,7 +84,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Navs() {
     const [open, setOpen] = useState(false);
-    const user = useSelector(selectUser);
+    // const user = useSelector(selectUser);
+    const {totalCount} = useSelector((state)=>state.user)
     const dispatch=useDispatch();
 
     const navigate=useNavigate()
@@ -246,13 +247,14 @@ export default function Navs() {
                 <MailIcon />
               </Badge>
             </IconButton> */}
-            {
+            {/* {
               user ?
               <Button sx={style} onClick={(e)=>handleLogOut(e)}>Logout</Button>
               :
               <Button onClick={handleClickOpen} sx={style}>Login</Button>
-            }
-            <Button sx={styleCart}><ShoppingCartIcon/>Cart</Button>
+            } */}
+            <Button onClick={handleClickOpen} sx={style}>Login</Button>
+            <Button sx={styleCart}><IconButton sx={{color:"white"}}> {totalCount}<ShoppingCartIcon/></IconButton></Button>
             <IconButton
               size="large"
               edge="end"
