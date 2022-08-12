@@ -20,7 +20,7 @@ const Login = (props) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-    const [number, setNumber] = useState("")
+    const [phone, setPhone] = useState("")
 
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [cPasswordClass, setCPasswordClass] = useState('');
@@ -37,39 +37,7 @@ const Login = (props) => {
 
     const signUp = (e) => {
         e.preventDefault()
-        let item = { email, password, confirmPassword, number }
-
-        // {
-        //     (() => {
-        //         switch (password,number,confirmPassword) {
-        //             case "password":
-                        
-        //                     if (password !== confirmPassword) {
-        //                         setShowErrorMessage(true)
-        //                         setCPasswordClass("Password and Confirm Password are not match try again !")
-                    
-        //                     }
-                        
-        //                 break;
-        //             case "number":
-        //                 if (number.length > 10) {
-        //                     setIsError(true);
-        //                 }
-        //                 break;
-        //                 break;
-        //             default:
-        //                 break;
-        //         }
-        //         return (
-        //             console.log("data", item),
-        //             setShowErrorMessage(false),
-        //             setIsError(false),
-        //             alert("data submitted successfully"),
-        //             // setAlert(true)
-        //             setOff(props.onClose)
-        //         )
-        //     })()
-        // }
+        let userData = { email, password, confirmPassword, phone }
 
 
         if (password !== confirmPassword) {
@@ -80,10 +48,10 @@ const Login = (props) => {
        
         else {
 
-            if (number.length > 10) {
+            if (phone.length > 10) {
                 setIsError(true);
             }else{
-                console.log("data", item)
+                console.log("data", userData)
                 setShowErrorMessage(false)
                 setIsError(false);
                 alert("data submitted successfully")
@@ -123,8 +91,8 @@ const Login = (props) => {
 
 
     const LoginSubmit = () => {
-        let item = { email, password, confirmPassword, number }
-        console.log("data", item)
+        let userData = { email, password, confirmPassword, phone }
+        console.log("data", userData)
 
         // dispatch(login({
         //     email:email,
@@ -170,12 +138,12 @@ const Login = (props) => {
                                         <TextField type="password" value={password} onChange={(e) => setPassword(e.target.value)} className={styles.inputField} variant="standard" name='password' label='Enter Password' required />
                                         <TextField type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className={styles.inputField} variant="standard" name='confirmPassword' label='Enter Confirm Password' required />
                                         {showErrorMessage ? <Alert severity="error">{cPasswordClass}</Alert> : null}
-                                        <TextField type="number" value={number} onChange={(e) => {
-                                            setNumber(e.target.value);
+                                        <TextField type="number" value={phone} onChange={(e) => {
+                                            setPhone(e.target.value);
 
                                         }
 
-                                        } className={styles.inputField} variant="standard" name='number' label='Enter Mobile number' error={isError} required />
+                                        } className={styles.inputField} variant="standard" name='phone' label='Enter Mobile number' error={isError} required />
                                         <Box className={styles.loginButton}>
                                             <Button type='submit' sx={style} form="myform">CONTINUE</Button>
                                         </Box>
