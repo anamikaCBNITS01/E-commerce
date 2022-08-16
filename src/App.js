@@ -24,6 +24,9 @@ import Category from './components/AllDetails/Category/Category'
 import Wishlist from './components/AllDetails/Wishlist/Wishlist'
 import About from './components/AllDetails/About/About';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <BrowserRouter>
@@ -51,8 +54,10 @@ function App() {
         <Route path='/myOrder' element={<MyOrder />} />
         <Route path='/trackOrder' element={<TrackOrder/>} />
         <Route path='/Your-shopping-cart' element={<CartContainer />} />
+        
 
       </Routes>
+      <ToastContainer/>
     </BrowserRouter>
   );
 }

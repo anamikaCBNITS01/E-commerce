@@ -1,4 +1,4 @@
-import { Alert, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField, Typography } from '@mui/material'
+import { Alert, AlertTitle, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useState } from 'react'
 import styles from './style.module.css'
@@ -8,6 +8,8 @@ import ClearIcon from '@mui/icons-material/Clear';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, selectUser } from '../../features/userSlice'
+import {ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const style = {
     color: "white"
@@ -15,7 +17,6 @@ const style = {
 
 const Login = (props) => {
     const [signup, setSignUp] = useState(false);
-    const [signup1, setSignUp1] = useState(true);
     const [off, setOff] = useState(null);
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -25,7 +26,10 @@ const Login = (props) => {
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [cPasswordClass, setCPasswordClass] = useState('');
     const [isError, setIsError] = useState(false);
-    // const [isCPasswordDirty, setIsCPasswordDirty] = useState(false);
+
+    const [signupSuccessfull, setSignupSuccessfull] = useState(false);
+
+
 
     const dispatch = useDispatch();
     const user = useSelector(selectUser);
@@ -34,8 +38,20 @@ const Login = (props) => {
         setSignUp(true)
     }
 
+    
+    const errorRegistered=()=>{
+        if(setSignupSuccessfull===false){
+            toast.error('error',{ position: toast.POSITION.TOP_RIGHT })
+        }
+    }
+    const successRegistered=()=>{
+        if(setSignupSuccessfull===true){
+            toast.success('successful',{ position: toast.POSITION.TOP_RIGHT })
+        }
+    }
 
-    const signUp = (e) => {
+
+    const signUp = async (e) => {
         e.preventDefault()
         let userData = { email, password, confirmPassword, phone }
 
@@ -45,53 +61,55 @@ const Login = (props) => {
             setCPasswordClass("Password and Confirm Password are not match try again !")
 
         }
-       
+
         else {
 
             if (phone.length > 10) {
                 setIsError(true);
-            }else{
-                console.log("data", userData)
-                setShowErrorMessage(false)
-                setIsError(false);
-                alert("data submitted successfully")
-                // setAlert(true)
-                setOff(props.onClose)
+            } else {
+                toast.dismiss();
+
+
+                fetch("http://localhost:3000/user/signup", {
+                    method: "POST",
+                    crossDomain: true,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password,
+                        confirmPassword,
+                        phone
+                    }),
+                }).then((resp) => {
+                    console.log("risponse od data", resp)
+                    if (resp.ok === false) {
+                        setSignupSuccessfull(false)
+                        toast.error('This email address is alredy exist Try again !!',{ position: toast.POSITION.TOP_CENTER ,autoClose: false })
+                        
+                        
+                    } else {
+                        console.log("response", resp)
+                        setSignUp(false)
+                        setIsError(false)
+                        setSignupSuccessfull(true)
+                        toast.success('User Registered Successfully',{ position: toast.POSITION.TOP_CENTER })
+                        
+                    }
+                })
             }
         }
-
-
-
-
-
-        // dispatch(login({
-        //     email:email,
-        //     password:password,
-        //     conPass:conPass,
-        //     number:number,
-        //     loggedIn:true,
-        // }))
-
-        //    let result = await axios({
-
-        //         // Endpoint to send files
-        //         url: "url",
-        //         method: "POST",
-        //         headers: {
-        //                 'Content-Iype':'application/json',
-        //                 "Accept":'application/json',
-        //         },
-        //       })
-        //       result= await result.json();
-        //       localStorage.setItem("user-info",JSON.stringify(result))
-        //       //close drawer
-        //       console.warn("result",result)
+        
 
     }
 
 
-    const LoginSubmit = () => {
-        let userData = { email, password, confirmPassword, phone }
+    const LoginSubmit = async (e) => {
+        e.preventDefault();
+        let userData = await { email, password, confirmPassword, phone }
         console.log("data", userData)
 
         // dispatch(login({
@@ -101,6 +119,36 @@ const Login = (props) => {
         //     number:number,
         //     loggedIn:true,
         // }))
+
+        fetch("http://localhost:3000/user/login", {
+            method: "POST",
+            crossDomain: true,
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+                email,
+                password,
+            }),
+        }).then((resp) => {
+            console.log("response", resp)
+            if (resp.ok === false) {
+                toast.error("Invalid email address and password !", {
+                    position: toast.POSITION.TOP_CENTER
+                  });
+            }
+            else {
+                console.log("response", resp)
+                toast.success("Login Successfully ", {
+                    position: toast.POSITION.TOP_CENTER
+                  });
+
+                setIsError(false)
+                setOff(props.onClose)
+            }
+        })
     }
     const offDrawer = () => {
         setOff(props.onClose)
@@ -111,6 +159,7 @@ const Login = (props) => {
 
 
     }
+
     return (
         <div>
             <Dialog
@@ -154,19 +203,17 @@ const Login = (props) => {
                                 </Box>
                                 :
                                 <Box className={styles.SignUpLoginBox}>
-                                    <form onSubmit={LoginSubmit}>
-                                        <TextField value={email} onChange={(e) => setEmail(e.target.value)} className={styles.inputField} variant="standard" name='email' label='Enter Email/Mobile number' required />
-                                        <TextField value={password} onChange={(e) => setPassword(e.target.value)} className={styles.inputField} variant="standard" name='password' label='Enter Password' required />
+                                    <form onSubmit={LoginSubmit} id="loginform">
+                                        <TextField type="email" value={email} onChange={(e) => setEmail(e.target.value)} className={styles.inputField} variant="standard" name='email' label='Enter Email' required />
+                                        <TextField type="password" value={password} onChange={(e) => setPassword(e.target.value)} className={styles.inputField} variant="standard" name='password' label='Enter Password' required />
                                         <Box className={styles.loginButton}>
-                                            <Button type='submit' sx={style}>LogIn</Button>
+                                            <Button type='submit' sx={style} form="loginform">LogIn</Button>
 
                                         </Box>
                                     </form>
 
                                     <Box className={styles.signUpLinks}>
                                         <Typography className={styles.signUpLinks1} onClick={onSignupPage}>New to Shopping Mart? Create an account</Typography>
-                                        {/* <Button className={styles.signUpLinks1} onClick={()=>setSignUp(true)} >New to Flipkart ?</Button>
-                                    <Button className={styles.signUpLinks1} onClick={()=>setSignUp(true)}>Create an account</Button> */}
                                     </Box>
                                 </Box>
                         }
