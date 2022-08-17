@@ -102,6 +102,14 @@ export default function Navs() {
       e.preventDefault();
       dispatch(logout())
     }
+
+    const data = window.localStorage.getItem("userData");
+    const signout = () => {
+       localStorage.removeItem("userData") ;
+       navigate('/')
+       window.location.reload(true)
+       
+    }
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState(null);
@@ -253,7 +261,8 @@ export default function Navs() {
               :
               <Button onClick={handleClickOpen} sx={style}>Login</Button>
             } */}
-            <Button onClick={handleClickOpen} sx={style}>Login</Button>
+            {/* <Button onClick={handleClickOpen} sx={style}>Login</Button> */}
+            {data && data ? <Button onClick={signout} sx={style}>Logout</Button> : !data && <Button sx={style} onClick={handleClickOpen}>Login</Button>}
             <Button sx={styleCart}><IconButton sx={{color:"white"}}> {totalCount}<ShoppingCartIcon/></IconButton></Button>
             <IconButton
               size="large"

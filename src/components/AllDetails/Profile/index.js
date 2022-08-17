@@ -18,6 +18,14 @@ const bull = (
 );
 
 export default function ProfilePage() {
+  const [userDetail,setUserDetail]=React.useState('')
+
+  const data = window.localStorage.getItem("userDetails");
+  // console.log("data",data.parseInt(data))
+    React.useEffect(()=>{
+      
+    },[])
+
   return (
     <Card sx={{ maxWidth: "50%",textAlign:"center",marginLeft:"25rem",marginTop:"50px",height:"60vh" }}>
       <CardContent>

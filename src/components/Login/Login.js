@@ -3,12 +3,12 @@ import { Box } from '@mui/system'
 import React, { useState } from 'react'
 import styles from './style.module.css'
 import logo from '../../assets/logo3.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, selectUser } from '../../features/userSlice'
-import {ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const style = {
@@ -29,6 +29,8 @@ const Login = (props) => {
 
     const [signupSuccessfull, setSignupSuccessfull] = useState(false);
 
+    let navigate = useNavigate();
+    
 
 
     const dispatch = useDispatch();
@@ -38,15 +40,15 @@ const Login = (props) => {
         setSignUp(true)
     }
 
-    
-    const errorRegistered=()=>{
-        if(setSignupSuccessfull===false){
-            toast.error('error',{ position: toast.POSITION.TOP_RIGHT })
+
+    const errorRegistered = () => {
+        if (setSignupSuccessfull === false) {
+            toast.error('error', { position: toast.POSITION.TOP_RIGHT })
         }
     }
-    const successRegistered=()=>{
-        if(setSignupSuccessfull===true){
-            toast.success('successful',{ position: toast.POSITION.TOP_RIGHT })
+    const successRegistered = () => {
+        if (setSignupSuccessfull === true) {
+            toast.success('successful', { position: toast.POSITION.TOP_RIGHT })
         }
     }
 
@@ -88,21 +90,24 @@ const Login = (props) => {
                     console.log("risponse od data", resp)
                     if (resp.ok === false) {
                         setSignupSuccessfull(false)
-                        toast.error('This email address is alredy exist Try again !!',{ position: toast.POSITION.TOP_CENTER ,autoClose: false })
-                        
-                        
+                        toast.error('This email address is alredy exist Try again !!', { position: toast.POSITION.TOP_CENTER, autoClose: false })
+
+
                     } else {
+
                         console.log("response", resp)
                         setSignUp(false)
                         setIsError(false)
                         setSignupSuccessfull(true)
-                        toast.success('User Registered Successfully',{ position: toast.POSITION.TOP_CENTER })
-                        
+                        toast.success('User Registered Successfully', { position: toast.POSITION.TOP_CENTER })
+
+
+
                     }
                 })
             }
         }
-        
+
 
     }
 
@@ -132,21 +137,27 @@ const Login = (props) => {
                 email,
                 password,
             }),
+
         }).then((resp) => {
             console.log("response", resp)
             if (resp.ok === false) {
                 toast.error("Invalid email address and password !", {
                     position: toast.POSITION.TOP_CENTER
-                  });
+                });
             }
             else {
+
                 console.log("response", resp)
                 toast.success("Login Successfully ", {
                     position: toast.POSITION.TOP_CENTER
-                  });
-
+                });
+                console.log("user login succesfully")
+                navigate('/')
+                // setIsLoggedin(true);
                 setIsError(false)
                 setOff(props.onClose)
+                localStorage.setItem("userData",true, JSON.stringify(userData));
+                localStorage.setItem('userDetails', JSON.stringify(userData));
             }
         })
     }
@@ -159,6 +170,8 @@ const Login = (props) => {
 
 
     }
+
+    
 
     return (
         <div>
