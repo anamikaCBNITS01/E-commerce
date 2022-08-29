@@ -25,15 +25,14 @@ const Header = () => {
                         size="large"
                         edge="start"
                         aria-label="open drawer"
-                        sx={{color:"white",marginLeft:"1rem" }}
+                        sx={{color:"black",marginLeft:"1rem" }}
                     >
-                        <button onClick={()=>setShowModal(true)} ><MenuIcon/></button>
+                        <div onClick={()=>setShowModal(true)} ><MenuIcon/></div>
                     </IconButton>
                 </div>
                 <div className={styles.itemsDiv}><Link to="/" className={styles.items}><span></span>Home</Link></div>
                 <div><Link to="/about" className={styles.items}><span></span>About</Link></div>
                 <div><Link to="/category" className={styles.items}><span></span>Category</Link></div>
-                <div><Link to="/wishlist" className={styles.items}><span></span>WishList</Link></div>
                 <div><Link to="/contactUs" className={styles.items}><span></span>Contact-Us</Link></div>
             </div>
             <SideBar open={showModal} onClose={()=>setShowModal(false)}/>

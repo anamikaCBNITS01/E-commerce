@@ -1,6 +1,6 @@
 import { Grid, Paper } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './style.module.css'
 import { styled } from '@mui/material/styles';
 import pro1 from '../../../assets/product1.jpg'
@@ -11,9 +11,10 @@ import pro5 from '../../../assets/product5.jpg'
 import pro6 from '../../../assets/product6.jpg'
 import pro7 from '../../../assets/product7.jpg'
 import { TrendingData } from '../../AllProducts/Trending/TrendingData';
-import { useDispatch } from 'react-redux';
-import { getCartItem } from '../../../features/userSlice';
-// import { getCartItem } from '../../features/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../../../features/userSlice';
+import { useNavigate } from 'react-router-dom';
+
 
 const Products = () => {
     const Item = styled(Paper)(({ theme }) => ({
@@ -23,7 +24,19 @@ const Products = () => {
         textAlign: 'center',
         color: theme.palette.text.secondary,
     }));
+    const {items,totalAmount} = useSelector((state)=>state.user);
     const dispatch = useDispatch();
+    let navigate=useNavigate();
+
+    const handleAdd=(item)=>{
+            dispatch(addToCart(item));
+            
+
+    }
+
+    // useEffect(()=>{
+    //     dispatch(addToCart());
+    // },[items])
     return (
         <div>
             <div>
@@ -46,7 +59,7 @@ const Products = () => {
                                                         {item.inStock?<div className={styles.InStock}>In Stock</div>:<div className={styles.outStock}>Out Of Stock</div>}
                                                     </div>
                                                     <div className={styles.Buttons}>
-                                                        <div><button className={styles.ButtonsAdd} onClick={()=>dispatch(getCartItem())}>Add to Cart</button></div>
+                                                        <div><button type='submit' className={styles.ButtonsAdd} onClick={()=>handleAdd(item)}>Add to Cart</button></div>
                                                         <div><button className={styles.ButtonsBuy}>Buy Now</button></div>
                                                     </div>
                                                 </Box>

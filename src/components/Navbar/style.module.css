@@ -3,13 +3,13 @@
     display: flex;
     justify-content:center;
 }
-.loginButton{
-    background-color: white;
-    color: #2874f0;
-    width: 8%;
-    border-radius: 0px;
-    font-weight: bold;
-    text-align: center;
+.LoginBtn{
+    background-color: white !important;
+    color: #2874f0 !important;
+    width: 8% !important;
+    border-radius: 0px !important;
+    font-weight: bold !important;
+    text-align: center !important;
 }
 .searchbar{
     width: 400px;
@@ -25,4 +25,16 @@
 .loginBtn:hover{
     color:white;
     background-color: black;
+}
+.totalProducts{
+    background-color: red !important;
+    width: 24px !important;
+    height: 24px !important;
+    position: relative !important;
+    left: 38px !important;
+    bottom:12px !important;
+}
+.cartIcon{
+    color: black !important;
+    font-size: 30px !important;
 }

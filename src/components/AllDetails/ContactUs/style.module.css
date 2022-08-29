@@ -10,9 +10,53 @@
     position: relative !important;
     left: 25% !important;
     height: 77vh !important;
-    background-color: #b3b2b1 !important;
+    background-color: #d1c0a0 !important;
 }
 .input{
    margin-top: 20px !important;
    font-weight: bold !important;
+}
+.divFlex{
+    display: flex !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+.leftBox{
+    width: 50% !important;
+   
+}
+.rightBox{
+    width: 50% !important;
+}
+.textField{
+    margin-top: 50px !important;
+    margin-left: 50px !important;
+}
+.textFieldMeaage{
+    margin-top: 50px !important;
+    text-align: center !important;   
+}
+.RightBoxContent{
+    background-color: #0e96d4 !important;
+    color: white !important;
+    height: 85vh;
+}
+.BoxContent{
+    margin-top: 50px;
+}
+.head{
+color: #403499;
+font-weight: bold;
+margin-top: 15px;
+}
+.BoxHeading{
+    text-align: center;
+    
+}
+.divFlexContact{
+    margin-top: 10px;
+    display: flex !important;
+    align-items:center !important;
+    justify-content: center;
+    
 }

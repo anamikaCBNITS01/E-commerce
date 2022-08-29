@@ -8,7 +8,7 @@ import styles from './HomeKitchen.module.css'
 import fan from '../../../assets/fans.jpg'
 import waterP from '../../../assets/waterP.png'
 import mixer from '../../../assets/mixer.jpg'
-import CategorySidebar from '../../AllDetails/CatSidbar';
+import CategorySidebar from '../../AllDetails/CategorySidbar';
 import poster from '../../../assets/homeKitchenPoster.jpg'
 
 

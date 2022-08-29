@@ -4,6 +4,18 @@ import './index.css';
 import App from './App';
 import {Provider} from 'react-redux';
 import store from './app/store'
+import { configureStore } from '@reduxjs/toolkit';
+import userSlice from './features/userSlice';
+import { TrendingData } from './components/AllProducts/Trending/TrendingData';
+
+// const store=configureStore({
+//   reducer:{
+//     cart:userSlice,
+//     [TrendingData.reducerPath]:TrendingData.reducer
+//   },
+//   middleware:(getDefaultMiddleware)=>
+//   getDefaultMiddleware().concat(TrendingData.middleware)
+// })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,5 +1,5 @@
 import React from 'react'
-import CategorySidebar from '../../AllDetails/CatSidbar'
+import CategorySidebar from '../../AllDetails/CategorySidbar'
 import styles from './style.module.css'
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';

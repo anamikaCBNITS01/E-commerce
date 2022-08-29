@@ -1,0 +1,23 @@
+.Heading{
+  width: 50% !important;
+  margin-top: 30px !important;
+}
+.TableHeading{
+    background-color: black !important;
+}
+.TableCell{
+    color: white !important;
+}
+.Table{
+    margin-top: 30px !important; 
+}
+.Image{
+    width: 100px !important;
+    height: 80px !important;
+}
+.add{
+    background-color: #fcd68a !important;
+    color: black !important;
+    font-weight: bold !important;
+    border-radius: 10px !important;
+}

@@ -18,7 +18,6 @@ import MyOrder from './components/AllDetails/MyOrder';
 import BuyProccessStepper from './components/AllDetails/BuyProcess/Buy';
 import TrackOrder from './components/AllDetails/TrackOrder'
 import Contact from './components/AllDetails/ContactUs/Contact'
-import EditProfile from './components/AllDetails/EditProfile'
 import ProfilePage from './components/AllDetails/Profile'
 import Category from './components/AllDetails/Category/Category'
 import Wishlist from './components/AllDetails/Wishlist/Wishlist'
@@ -26,6 +25,8 @@ import About from './components/AllDetails/About/About';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProductList from './components/AllProducts/ProductList/ProductList';
+import EditProfile from './components/AllDetails/Profile/EditProfile';
 
 function App() {
   return (
@@ -54,6 +55,8 @@ function App() {
         <Route path='/myOrder' element={<MyOrder />} />
         <Route path='/trackOrder' element={<TrackOrder/>} />
         <Route path='/Your-shopping-cart' element={<CartContainer />} />
+        <Route path='/productList' element={<ProductList />} />
+        <Route path='/editProfile' element={<EditProfile />} />
         
 
       </Routes>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Card, CardActions, CardContent, InputAdornment, TextField, Typography } from '@mui/material'
+import { Alert, Box, Button, Card, CardActions, CardContent, Chip, InputAdornment, TextareaAutosize, TextField, Typography } from '@mui/material'
 import styles from './style.module.css';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
@@ -7,75 +7,67 @@ import EmailIcon from '@mui/icons-material/Email';
 
 const Contact = () => {
     return (
-        <Box className={styles.container}>
-            <Card className={styles.Card}>
-            <Box>
-                <h1>Contact Us</h1>
-            </Box>
-                <CardContent>
-                    <Typography color="text.secondary" gutterBottom>
-                        <TextField
-                            id="input-with-icon-textfield"
-                            label="Enter Your Name"
-                            className={styles.input}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <AccountCircle />
-                                    </InputAdornment>
-                                ),
-                            }}
-                            variant="standard"
-                        />
-                    </Typography>
-                    <Typography color="text.secondary" gutterBottom>
-                        <TextField
-                            id="input-with-icon-textfield"
-                            label="Enter Your Email Id"
-                            className={styles.input}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <EmailIcon />
-                                    </InputAdornment>
-                                ),
-                            }}
-                            variant="standard"
-                        />
-                    </Typography>
-                    <Typography color="text.secondary" gutterBottom>
-                        <TextField
-                            id="input-with-icon-textfield"
-                            label="Enter Your Phone Number"
-                            className={styles.input}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <LocalPhoneIcon />
-                                    </InputAdornment>
-                                ),
-                            }}
-                            variant="standard"
-                        />
-                    </Typography>
-                    <Typography>
-                        <TextField
-                            id="filled-multiline-static"
-                            label="Comment"
-                            className={styles.input}
-                            multiline
-                            rows={4}
-                            defaultValue="Write your comment here..."
-                            fullWidth
-                            variant="filled"
-                        />
-                    </Typography>
-                </CardContent>
-                <CardActions className={styles.input}>
-                    <Button variant='contained' size="small">Submit</Button>
-                </CardActions>
-            </Card>
-        </Box>
+        <div>
+            <div className={styles.divFlex}>
+                <div className={styles.leftBox}>
+
+                    <h1>Contact Us</h1>
+                    <div>
+                        <Alert icon={false} severity="success">
+                            We would love to respond to your quaries and help you succeed.
+                            Feel free to got in touch with Us
+                        </Alert></div>
+                    <Card>
+                        <div className={styles.head}>Send Your Request</div>
+                        <div>
+                            <TextField className={styles.textField} id="filled-basic" label="Name" variant="filled" />
+                            <TextField className={styles.textField} id="filled-basic" label="Phone" variant="filled" />
+                        </div>
+                        <div>
+                            <TextField className={styles.textField} id="filled-basic" label="Email" variant="filled" />
+                            <TextField className={styles.textField} id="filled-basic" label="Subject" variant="filled" />
+                        </div>
+                        <div>
+                            <TextField
+                                className={styles.textFieldMeaage}
+                                fullWidth
+                                id="filled-multiline-static"
+                                label="Message"
+                                multiline
+                                rows={4}
+                                defaultValue="Default Value"
+                                variant="filled"
+                            />
+                        </div>
+                        <CardActions>
+                            <Button variant='contained'>Submit</Button>
+                        </CardActions>
+                    </Card>
+                </div>
+                <div className={styles.rightBox}>
+                    <Card className={styles.RightBoxContent}>
+                        <h3 className={styles.BoxHeading}>Reach Us</h3>
+                        <div className={styles.BoxContent}>
+                            <div className={styles.divFlexContact}>
+                                <div><h4>Email :</h4></div><div>contact@gmail.com</div>
+                            </div>
+                            <div className={styles.divFlexContact}>
+                                <div><h4>Phone :</h4></div><div>1234567890</div>
+                            </div>
+                            <div className={styles.divFlexContact}>
+                                <div><h4>state :</h4></div><div>Madhya Pradesh</div>
+                            </div>
+                            <div className={styles.divFlexContact}>
+                                <div><h4>city :</h4></div><div>Delhi</div>
+                            </div>
+                            <div className={styles.divFlexContact}>
+                                <div><h4>Website : </h4></div><div>http://localhost:3001/</div>
+                            </div>
+                        </div>
+                    </Card>
+                </div>
+            </div>
+        </div>
     )
 }
 

@@ -1,8 +1,8 @@
-import { Alert, AlertTitle, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, TextField, Typography } from '@mui/material'
+import { Alert, AlertTitle, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, InputAdornment, Snackbar, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useState } from 'react'
 import styles from './style.module.css'
-import logo from '../../assets/logo3.png'
+import logo from '../../assets/logo5.png'
 import { Link, useNavigate } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
 import axios from 'axios'
@@ -10,6 +10,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login, selectUser } from '../../features/userSlice'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 const style = {
     color: "white"
@@ -26,30 +29,20 @@ const Login = (props) => {
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [cPasswordClass, setCPasswordClass] = useState('');
     const [isError, setIsError] = useState(false);
+    const [passwordType, setPasswordType] = useState("password");
 
     const [signupSuccessfull, setSignupSuccessfull] = useState(false);
-
-    let navigate = useNavigate();
     
 
+    let navigate = useNavigate();
 
-    const dispatch = useDispatch();
-    const user = useSelector(selectUser);
+
+
+    // const dispatch = useDispatch();
+    // const user = useSelector(selectUser);
 
     const onSignupPage = () => {
         setSignUp(true)
-    }
-
-
-    const errorRegistered = () => {
-        if (setSignupSuccessfull === false) {
-            toast.error('error', { position: toast.POSITION.TOP_RIGHT })
-        }
-    }
-    const successRegistered = () => {
-        if (setSignupSuccessfull === true) {
-            toast.success('successful', { position: toast.POSITION.TOP_RIGHT })
-        }
     }
 
 
@@ -87,15 +80,12 @@ const Login = (props) => {
                         phone
                     }),
                 }).then((resp) => {
-                    console.log("risponse od data", resp)
                     if (resp.ok === false) {
                         setSignupSuccessfull(false)
                         toast.error('This email address is alredy exist Try again !!', { position: toast.POSITION.TOP_CENTER, autoClose: false })
 
 
                     } else {
-
-                        console.log("response", resp)
                         setSignUp(false)
                         setIsError(false)
                         setSignupSuccessfull(true)
@@ -109,6 +99,14 @@ const Login = (props) => {
         }
 
 
+    }
+
+    const togglePassword = () => {
+        if (passwordType === "password") {
+            setPasswordType("text")
+            return;
+        }
+        setPasswordType("password")
     }
 
 
@@ -156,7 +154,7 @@ const Login = (props) => {
                 // setIsLoggedin(true);
                 setIsError(false)
                 setOff(props.onClose)
-                localStorage.setItem("userData",true, JSON.stringify(userData));
+                localStorage.setItem("userData", true, JSON.stringify(userData));
                 localStorage.setItem('userDetails', JSON.stringify(userData));
             }
         })
@@ -171,7 +169,7 @@ const Login = (props) => {
 
     }
 
-    
+
 
     return (
         <div>
@@ -197,8 +195,13 @@ const Login = (props) => {
                                 <Box className={styles.SignUpLoginBox}>
                                     <form onSubmit={signUp} id="myform">
                                         <TextField type="email" value={email} onChange={(e) => setEmail(e.target.value)} className={styles.inputField} variant="standard" name='email' label='Enter Email' required />
-                                        <TextField type="password" value={password} onChange={(e) => setPassword(e.target.value)} className={styles.inputField} variant="standard" name='password' label='Enter Password' required />
-                                        <TextField type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className={styles.inputField} variant="standard" name='confirmPassword' label='Enter Confirm Password' required />
+                                        <TextField type={passwordType} value={password} onChange={(e) => setPassword(e.target.value)} className={styles.inputField} variant="standard" name='password' label='Enter Password' required />
+                                        <TextField type={passwordType} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className={styles.inputField} variant="standard" name='confirmPassword' label='Enter Confirm Password'
+                                            InputProps={{
+                                                endAdornment: (passwordType==='password' ? <VisibilityOffIcon onClick={togglePassword}/> :<VisibilityIcon onClick={togglePassword}/>)
+                                            }}
+                                            required />
+                                            {/* {passwordType==="password"?"hii":"hello"} */}
                                         {showErrorMessage ? <Alert severity="error">{cPasswordClass}</Alert> : null}
                                         <TextField type="number" value={phone} onChange={(e) => {
                                             setPhone(e.target.value);
@@ -225,8 +228,8 @@ const Login = (props) => {
                                         </Box>
                                     </form>
 
-                                    <Box className={styles.signUpLinks}>
-                                        <Typography className={styles.signUpLinks1} onClick={onSignupPage}>New to Shopping Mart? Create an account</Typography>
+                                    <Box className={styles.requestButton}>
+                                        <Typography className={styles.requestBtn} sx={{display:"flex",alignItems:"center"}} onClick={onSignupPage}>New to Shopping Mart? Create an account</Typography>
                                     </Box>
                                 </Box>
                         }

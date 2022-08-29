@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const User = require('../model/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
-
+const Product = require('../model/Product')
 
 router.get('/', (req, res, next) => {
     res.status(200).json({
@@ -68,25 +68,27 @@ router.post('/login', (req, res, next) => {
 
                 if (result) {
                     const token = jwt.sign({
-                        email : user[0].email,
-                        phone : user[0].phone
+                        email: user[0].email,
+                        phone: user[0].phone
                     },
-                    'this is secret key',{expiresIn:"24h"
-                }
+                        'this is secret key', {
+                            expiresIn: "24h"
+                    }
                     );
                     res.status(200).json({
-                        email:user[0].email,
-                        phone:user[0].phone,
-                        token:token
+                        email: user[0].email,
+                        phone: user[0].phone,
+                        token: token
                     })
                 }
             })
         })
-        .catch(err=>{
+        .catch(err => {
             res.status(500).json({
-                err:err
+                err: err
             })
         })
 })
+
 
 module.exports = router;

@@ -40,9 +40,7 @@ export default function EditProfile() {
                     <Typography sx={{ marginTop: 5 }} color="text.secondary" gutterBottom>
                         <TextField id="filled-basic" label="Enter Your Full Name" variant="standard" />
                     </Typography>
-                    <Typography sx={{ marginTop: 2 }} color="text.secondary" gutterBottom>
-                        <TextField id="filled-basic" label="Enter Your Email Address " variant="standard" />
-                    </Typography>
+                   
                     <Typography sx={{ marginTop: 2 }} color="text.secondary" gutterBottom>
                         <TextField id="filled-basic" label="Enter Your Phone Number " variant="standard" />
                     </Typography>

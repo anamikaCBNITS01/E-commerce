@@ -1,6 +1,9 @@
 .ViewAll{
     display: flex;
     align-items: center;
+    position: relative;
+    bottom: 110px;
+    justify-content: space-evenly;
 }
 .viewButton{
     display: flex;
@@ -23,8 +26,9 @@
     // height: 100vh;
     display: flex;
     justify-content: center;
+    bottom: 100px;
     // align-items: center;
-    margin-top: 50px;
+    
 }
 
 .Image {

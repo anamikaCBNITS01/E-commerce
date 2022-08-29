@@ -8,7 +8,7 @@
 .IconColor{
     color: white !important;
     text-decoration: none !important;
-    background-color: #5e798a;
+    background-color: #333333;
 }
 /* .ItemWithIcon:hover{
     color: white;
@@ -27,10 +27,10 @@
     display: inline;
 }
 .subMenu{
-    background-color: #5e798a !important;
+    background-color: #333333 !important;
 }
 .menuItem{
-    background-color: #5e798a !important;
+    background-color: #333333 !important;
 }
 .AccountClass{
     display: flex;

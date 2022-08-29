@@ -1,9 +1,34 @@
 .Images{
-    width: 60%;
-    height: 8em;
+    width: 110% !important;
+    height: 5em !important;
+    border-radius: 100px !important;
+}
+
+.Images2{
+    width: 60% !important;
+    height: 5em !important;
+    border-radius: 100px !important;
+}
+.Images5{
+    width: 90% !important;
+    height: 5em !important;
+    border-radius: 100px !important;
+}
+.FlexBox{
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+}
+.ImagesText{
+    text-align: center !important;
+}
+.ImagesText:hover{
+font-weight: bold !important;
+cursor: pointer !important;
+background-color: #fcd68a !important;
 }
 .buttons{
-    background-color: #6f8897;
+    background-color: #fcd68a !important;
     border: none;
     cursor: pointer;
     border-radius: 10px;
@@ -12,12 +37,12 @@
     font-size: 15px;
 }
 .buttons:hover{
-    background-color: #03353e;
-    color: white;
+    background-color: #fcd68a !important;
+    color: black !important;
 }
 .CategoryNav{
 /* margin-top: 22px; */
-background-color: #76838b;
+background-color: white;
 padding: 20px;
 }
 .link{
@@ -27,4 +52,8 @@ padding: 20px;
 .link:hover{
     color: white;
     text-decoration: none;
+}
+.cardStyle{
+width: fit-content !important;
+background-color: white !important;
 }

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,13 +15,14 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Button } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
 import Login from '../Login/Login'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout, selectUser } from '../../features/userSlice';
+import {  getTotals, selectUser } from '../../features/userSlice';
+import styles from './style.module.css'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -50,23 +51,35 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 }));
 
 const style={
-    color:"white",
-    background:" linear-gradient(to right, #16222A 0%, #3A6073  51%, #16222A  100%)",
-    width:"10em"
+    color:"black",
+    background:"  white !important",
+    width:"10em",
+    height:"50px",
+    borderRadius:"25px",
+    position:"relative",
+    top:"1px",
+    fontWeight:"bold",
+    boxShadow: "rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;"
 }
 const styleCart={
-    color:"white",
-    background:" linear-gradient(to right, #16222A 0%, #3A6073  51%, #16222A  100%)",
+    color:"black",
+    background:"white !important",
     width:"10em",
-    marginLeft:"1rem"
+    marginLeft:"1rem",
+    height:"50px",
+    borderRadius:"25px",
+    position:"relative",
+    top:"1px"
 }
 const siteName={
-    background:" linear-gradient(to right, #283048 0%, #859398  51%, #283048  100%)",
+    background:" white !important",
+    color:"black",
     display:"block",
     width:"20%",
     textAlign:"center",
     borderRadius: "15px 50px",
-    padding:"0.5rem"
+    padding:"0.5rem",
+    boxShadow:"rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, black 0px 18px 36px -18px inset"
 }
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'black',
@@ -85,8 +98,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Navs() {
     const [open, setOpen] = useState(false);
     // const user = useSelector(selectUser);
-    const {totalCount} = useSelector((state)=>state.user)
-    const dispatch=useDispatch();
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+    console.log("user==",user)
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [user, dispatch]);
+    const {cartTotalQuantity} = useSelector((state)=>state.user)
+    // const dispatch=useDispatch();
+
 
     const navigate=useNavigate()
 
@@ -100,12 +121,11 @@ export default function Navs() {
 
     const handleLogOut=(e)=>{
       e.preventDefault();
-      dispatch(logout())
     }
 
     const data = window.localStorage.getItem("userData");
     const signout = () => {
-       localStorage.removeItem("userData") ;
+       localStorage.removeItem("userData");
        navigate('/')
        window.location.reload(true)
        
@@ -202,24 +222,12 @@ export default function Navs() {
         </IconButton>
         <p>Add to Cart</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
     </Menu>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{backgroundColor:"#5e798a"}}>
+      <AppBar position="static" sx={{backgroundColor:"#333333"}}>
         <Toolbar>
           {/* <IconButton
             size="large"
@@ -263,18 +271,7 @@ export default function Navs() {
             } */}
             {/* <Button onClick={handleClickOpen} sx={style}>Login</Button> */}
             {data && data ? <Button onClick={signout} sx={style}>Logout</Button> : !data && <Button sx={style} onClick={handleClickOpen}>Login</Button>}
-            <Button sx={styleCart}><IconButton sx={{color:"white"}}> {totalCount}<ShoppingCartIcon/></IconButton></Button>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            <Button onClick={()=>navigate("/Your-shopping-cart")} sx={styleCart}><IconButton><Avatar className={styles.totalProducts}>{cartTotalQuantity}</Avatar><ShoppingCartIcon className={styles.cartIcon} /></IconButton></Button>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton

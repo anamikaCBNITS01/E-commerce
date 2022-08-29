@@ -8,7 +8,7 @@ import styles from './style.module.css'
 import bad1 from '../../../assets/bad1.jpg'
 import waterP from '../../../assets/waterP.png'
 import mixer from '../../../assets/mixer.jpg'
-import CategorySidebar from '../../AllDetails/CatSidbar';
+import CategorySidebar from '../../AllDetails/CategorySidbar';
 import poster from '../../../assets/saf.jpg';
 import dum1 from '../../../assets/dum1.jpg';
 import exbike1 from '../../../assets/exbike1.png'

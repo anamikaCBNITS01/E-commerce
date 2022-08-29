@@ -20,6 +20,7 @@ const SideBar = (props) => {
     
 
     const [profile, setProfile] = useState(false)
+    const [myWishlist, setMyWishList] = useState(false)
     const [menuItem, setMenuItem] = useState(false)
     const [open, setOpen] = useState(false);
     
@@ -54,6 +55,19 @@ const SideBar = (props) => {
 
     }
 
+    const isMyWishlist = () => {
+        const loggedInUser = window.localStorage.getItem("userData")=="true";
+        if(loggedInUser){
+            setMyWishList(true)
+            navigate('/wishlist')
+        }else{
+            setProfile(false)
+            setOpen(true)
+            return(<Login open={open}/>)
+        }   
+
+    }
+
     const data = window.localStorage.getItem("userData");
     const signout = () => {
         localStorage.removeItem("userData");
@@ -64,7 +78,7 @@ const SideBar = (props) => {
     }
     return (
         <Drawer open={props.open} onClose={props.onClose}>
-            <div style={{ float: "left", width: "100%", backgroundColor: "#5e798a", height: "1000vh" }}>
+            <div style={{ float: "left", width: "100%", backgroundColor: "#333333", height: "1000vh" }}>
                 <CancelIcon sx={{ paddingLeft: "300px" }} onClick={props.onClose} />
                 <div>
                     <div className={styles.ItemWithIcon}>
@@ -80,11 +94,12 @@ const SideBar = (props) => {
                             
                             <div className={menuItem?styles.ItemsD:styles.ItemsND}>
                                 <ul>
-                                    <li className={styles.AccountListItem}><Link to="/" className={styles.IconColor}>Account</Link></li>
-                                    <li className={styles.AccountListItem}><div onClick={isProfile} className={styles.IconColor}>Your Profile</div></li>
+                                    <li className={styles.AccountListItem}><Link to="/" className={styles.IconColor}></Link></li>
+                                    <li className={styles.AccountListItem}><div onClick={isProfile} className={styles.IconColor}>Profile</div></li>
                                     <li className={styles.AccountListItem}><Link to="/" className={styles.IconColor}>Login & Security</Link></li>
-                                    <li className={styles.AccountListItem}><Link to="/" className={styles.IconColor}>Your Order</Link></li>
-                                    <li className={styles.AccountListItem}><Link to="/" className={styles.IconColor}>Your Payment</Link></li>
+                                    <li className={styles.AccountListItem}><div onClick={isMyWishlist} to="/wishlist" className={styles.IconColor}>WishList</div></li>
+                                    <li className={styles.AccountListItem}><Link to="/cart" className={styles.IconColor}>Cart</Link></li>
+                                    <li className={styles.AccountListItem}><Link to="/" className={styles.IconColor}>Payment</Link></li>
                                 </ul>
                             </div>
                         </div>
